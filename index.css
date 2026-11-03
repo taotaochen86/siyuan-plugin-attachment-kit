@@ -1,0 +1,145 @@
+/* 附件锚文本 · 顶栏下拉菜单
+ * 所有颜色/圆角/阴影一律走思源的 --b3-* 变量，亮色与暗色主题自动跟随，不写死颜色。
+ */
+
+.aa-menu {
+  position: fixed;
+  z-index: 320;
+  box-sizing: border-box;
+  min-width: 320px;
+  max-width: 440px;
+  padding: 6px;
+  opacity: 0;
+  transform: translateY(-4px);
+  background: var(--b3-menu-background, var(--b3-theme-background));
+  color: var(--b3-theme-on-background);
+  border: 1px solid var(--b3-border-color);
+  border-radius: var(--b3-border-radius-b, 8px);
+  box-shadow: var(--b3-dialog-shadow, 0 8px 28px rgba(0, 0, 0, 0.16));
+}
+
+.aa-menu.is-placed {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.12s ease-out, transform 0.12s ease-out;
+}
+
+/* ---------- 头部 ---------- */
+
+.aa-menu__head {
+  padding: 8px 10px 9px;
+}
+
+.aa-menu__name {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--b3-theme-on-surface);
+  opacity: 0.55;
+}
+
+.aa-menu__meta {
+  margin-top: 3px;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--b3-theme-on-background);
+  opacity: 0.72;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---------- 分隔线 ---------- */
+
+.aa-menu__sep {
+  height: 1px;
+  margin: 2px 10px 6px;
+  background: var(--b3-border-color);
+  opacity: 0.75;
+}
+
+/* ---------- 菜单项 ---------- */
+
+.aa-menu__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  padding: 9px 10px 10px;
+  border-radius: var(--b3-border-radius-b, 6px);
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+}
+
+.aa-menu__item + .aa-menu__item {
+  margin-top: 1px;
+}
+
+.aa-menu__item:hover {
+  background: var(--b3-list-hover);
+}
+
+.aa-menu__item:active {
+  transform: translateY(0.5px);
+}
+
+.aa-menu__item.is-busy {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* 图标块 */
+.aa-menu__ico {
+  flex: 0 0 30px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  line-height: 0;
+}
+
+.aa-menu__ico--blue {
+  color: #2656a8;
+  background: rgba(38, 86, 168, 0.12);
+}
+
+.aa-menu__ico--green {
+  color: #1f8a5b;
+  background: rgba(31, 138, 91, 0.13);
+}
+
+/* 文字块 */
+.aa-menu__body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding-top: 1px;
+}
+
+.aa-menu__t {
+  font-size: 13.5px;
+  line-height: 1.4;
+  color: var(--b3-theme-on-background);
+}
+
+.aa-menu__d {
+  margin-top: 3px;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--b3-theme-on-surface);
+  opacity: 0.62;
+  white-space: normal;
+}
+
+/* 暗色主题下把两个图标底色提亮一点，免得糊成一团 */
+[data-theme-mode="dark"] .aa-menu__ico--blue {
+  color: #9db9e4;
+  background: rgba(157, 185, 228, 0.16);
+}
+
+[data-theme-mode="dark"] .aa-menu__ico--green {
+  color: #7fd2a8;
+  background: rgba(127, 210, 168, 0.16);
+}
