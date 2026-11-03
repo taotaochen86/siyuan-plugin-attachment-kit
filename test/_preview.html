@@ -3,51 +3,55 @@
 <head>
 <meta charset="utf-8">
 <style>
+  /* 设计尺寸 1600×930（比例 1.72）
+     详情页用 background-size:cover 渲染，容器比例随窗口在 1.5~2.1 浮动，
+     最坏按 1.4 与 2.6 也算过：
+       容器更窄（r_c=1.4）→ 左右各裁 9.3%
+       容器更扁（r_c=2.6）→ 上下各裁 16.9%
+     所以内容一律收进 x∈[15%,85%]、y∈[22%,78%] 的中心安全框，四周只留背景。 */
   * { margin:0; padding:0; box-sizing:border-box; }
-  html,body { width:1000px; height:480px; }
+  html,body { width:1600px; height:930px; }
   body {
     font-family:"Microsoft YaHei UI","Microsoft YaHei","Segoe UI",system-ui,sans-serif;
     background:
-      radial-gradient(620px 320px at 86% -14%, rgba(38,86,168,.10), transparent 70%),
-      radial-gradient(420px 260px at 4% 112%, rgba(31,138,91,.07), transparent 70%),
-      linear-gradient(135deg,#ffffff 0%,#f5f9ff 55%,#eef4fd 100%);
+      radial-gradient(980px 520px at 84% -12%, rgba(38,86,168,.13), transparent 70%),
+      radial-gradient(700px 420px at 6% 110%, rgba(31,138,91,.09), transparent 70%),
+      linear-gradient(135deg,#ffffff 0%,#f6f9ff 52%,#e9f1fd 100%);
     color:#16202e; position:relative; overflow:hidden;
   }
-  /* 详情页用 background-size:cover 渲染，会裁边 → 内容一律放在中间安全区（左右各留 10%） */
-  .frame { position:absolute; inset:26px; border:1px solid rgba(38,86,168,.11); border-radius:22px; }
-  .wrap { position:absolute; left:100px; right:100px; top:0; bottom:0;
-          display:flex; align-items:center; gap:34px; }
+  /* 安全框：left/right 240 (=15%)，top 204 (=22%)，bottom 205 */
+  .wrap { position:absolute; left:240px; right:240px; top:204px; bottom:205px;
+          display:flex; align-items:center; gap:46px; }
 
-  .brand { width:268px; flex:none; }
-  .logo { width:62px; height:62px; border-radius:16px; display:block;
-          box-shadow:0 8px 18px rgba(38,86,168,.24); }
-  .name { font-size:35px; font-weight:600; letter-spacing:.4px; margin-top:13px; line-height:1.1; }
-  .pkg  { font-family:Consolas,"Cascadia Mono",monospace; font-size:12px; color:#97a3b6; margin-top:7px; }
-  .tag  { font-size:15.5px; color:#46536b; margin-top:11px; letter-spacing:.2px; }
+  .brand { width:420px; flex:none; }
+  .logo { width:92px; height:92px; border-radius:22px; display:block;
+          box-shadow:0 12px 26px rgba(38,86,168,.26); }
+  .name { font-size:56px; font-weight:600; letter-spacing:.5px; margin-top:16px; line-height:1.12; }
+  .pkg  { font-family:Consolas,"Cascadia Mono",monospace; font-size:16px; color:#97a3b6; margin-top:10px; }
+  .tag  { font-size:21px; color:#46536b; margin-top:14px; letter-spacing:.2px; }
   .tag b { color:#2656a8; font-weight:600; }
 
-  .sep { width:1px; align-self:stretch; margin:150px 0; flex:none;
-         background:linear-gradient(180deg,transparent,rgba(38,86,168,.16) 20%,rgba(38,86,168,.16) 80%,transparent); }
+  .sep { width:1px; align-self:stretch; margin:26px 0; flex:none;
+         background:linear-gradient(180deg,transparent,rgba(38,86,168,.18) 18%,rgba(38,86,168,.18) 82%,transparent); }
 
-  .feats { flex:1; display:flex; flex-direction:column; gap:12px; }
-  .feat { display:flex; align-items:center; gap:14px; padding:13px 17px; border-radius:13px;
-          background:rgba(255,255,255,.86); border:1px solid rgba(23,43,74,.07);
-          box-shadow:0 4px 12px rgba(23,43,74,.05); }
-  .sq { width:36px; height:36px; border-radius:10px; flex:none; display:flex;
+  .feats { flex:1; display:flex; flex-direction:column; gap:18px; }
+  .feat { display:flex; align-items:center; gap:20px; padding:20px 26px; border-radius:18px;
+          background:rgba(255,255,255,.9); border:1px solid rgba(23,43,74,.07);
+          box-shadow:0 6px 18px rgba(23,43,74,.06); }
+  .sq { width:52px; height:52px; border-radius:14px; flex:none; display:flex;
         align-items:center; justify-content:center; }
   .blue  { background:#e8f0fb; }
   .green { background:#e6f5ee; }
-  .ft { font-size:18px; font-weight:600; letter-spacing:.2px; }
-  .fs { font-size:15px; color:#5c6979; margin-top:4px; letter-spacing:.1px; }
+  .ft { font-size:26px; font-weight:600; letter-spacing:.2px; }
+  .fs { font-size:20px; color:#5c6979; margin-top:6px; letter-spacing:.1px; }
   .fs em { font-style:normal; color:#1f8a5b; font-weight:600; }
   .fs u { text-decoration:none; color:#2656a8; font-weight:600; }
 </style>
 </head>
 <body>
-  <div class="frame"></div>
   <div class="wrap">
     <div class="brand">
-      <img class="logo" src="data:image/png;base64,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">
+      <img class="logo" src="../icon.png" alt="">
       <div class="name">文档附件管家</div>
       <div class="pkg">siyuan-plugin-attachment-kit</div>
       <div class="tag">附件改名、批量导出，<b>一点就成</b></div>
@@ -56,7 +60,7 @@
     <div class="feats">
       <div class="feat">
         <div class="sq blue">
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#2656a8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="#2656a8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M4 20h4l10-10a2.6 2.6 0 0 0-4-4L4 16v4z"/><path d="M13.5 6.5 17.5 10.5"/>
           </svg>
         </div>
@@ -67,7 +71,7 @@
       </div>
       <div class="feat">
         <div class="sq green">
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#1f8a5b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="#1f8a5b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M3 7.5A1.5 1.5 0 0 1 4.5 6h4l2 2.4h7A1.5 1.5 0 0 1 19 10v7.5A1.5 1.5 0 0 1 17.5 19h-13A1.5 1.5 0 0 1 3 17.5v-10z"/>
             <path d="M12 11.5v4.5"/><path d="M9.6 14l2.4 2.4 2.4-2.4"/>
           </svg>

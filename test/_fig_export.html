@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:880px; height:470px; }
+  body {
+    font-family:"Microsoft YaHei UI","Microsoft YaHei","Segoe UI",system-ui,sans-serif;
+    background:linear-gradient(135deg,#ffffff 0%,#f4f8ff 55%,#e9f1fd 100%);
+    color:#16202e; display:flex; align-items:center; justify-content:center;
+  }
+  .win { width:800px; background:#fff; border-radius:16px; overflow:hidden;
+         border:1px solid rgba(23,43,74,.10); box-shadow:0 18px 44px rgba(23,43,74,.13); }
+  .bar { display:flex; align-items:center; gap:10px; padding:13px 18px;
+         background:#f7faff; border-bottom:1px solid rgba(23,43,74,.08); }
+  .dots { display:flex; gap:7px; }
+  .dots i { width:11px; height:11px; border-radius:50%; display:block; }
+  .d1 { background:#ff5f57; } .d2 { background:#febc2e; } .d3 { background:#28c840; }
+  .path { flex:1; font-size:14.5px; color:#2b3a52; letter-spacing:.1px;
+          background:#fff; border:1px solid rgba(23,43,74,.10); border-radius:9px;
+          padding:7px 13px; margin-left:8px; }
+  .path b { font-weight:600; }
+  .path span { color:#8b97a9; }
+  .cnt { font-size:13px; color:#1f8a5b; background:#e6f5ee; border-radius:20px;
+         padding:5px 12px; font-weight:600; flex:none; }
+  .list { padding:8px 10px 12px; }
+  .row { display:flex; align-items:center; gap:12px; padding:7px 12px; border-radius:9px; }
+  .row:nth-child(odd) { background:#fafcff; }
+  .no { font-family:Consolas,"Cascadia Mono",monospace; font-size:14px; color:#2656a8;
+        font-weight:600; width:38px; flex:none; }
+  .ico { width:22px; height:22px; border-radius:6px; flex:none; display:flex;
+         align-items:center; justify-content:center; font-size:11px; font-weight:700; color:#fff; }
+  .pdf { background:#e2504a; } .xls { background:#1f8a5b; } .doc { background:#2b62c4; }
+  .csv { background:#1f8a5b; } .png { background:#8a5bd6; }
+  .fn { font-size:15px; color:#22304a; letter-spacing:.1px; }
+</style>
+</head>
+<body>
+  <div class="win">
+    <div class="bar">
+      <div class="dots"><i class="d1"></i><i class="d2"></i><i class="d3"></i></div>
+      <div class="path"><span>此电脑 › 临时 ›</span> <b>思源附件-20261103-214712-a3f9c2</b></div>
+      <div class="cnt">55 个文件 · 含 30 张图片</div>
+    </div>
+    <div class="list">
+      <div class="row"><span class="no">001</span><span class="ico pdf">PDF</span><span class="fn">参考文献汇编.pdf</span></div>
+      <div class="row"><span class="no">002</span><span class="ico png">PNG</span><span class="fn">研究区区位图.png</span></div>
+      <div class="row"><span class="no">003</span><span class="ico doc">DOC</span><span class="fn">试验设计方案.docx</span></div>
+      <div class="row"><span class="no">004</span><span class="ico xls">XLS</span><span class="fn">土壤理化性质.xlsx</span></div>
+      <div class="row"><span class="no">005</span><span class="ico pdf">PDF</span><span class="fn">N2O-reducing-microorganisms.pdf</span></div>
+      <div class="row"><span class="no">006</span><span class="ico png">PNG</span><span class="fn">生育期对比-2024.png</span></div>
+      <div class="row"><span class="no">007</span><span class="ico xls">XLS</span><span class="fn">灌溉制度表.xlsx</span></div>
+      <div class="row"><span class="no">008</span><span class="ico csv">CSV</span><span class="fn">2024年产量统计.csv</span></div>
+      <div class="row"><span class="no">009</span><span class="ico png">PNG</span><span class="fn">稻田水位逐日曲线.png</span></div>
+      <div class="row"><span class="no">010</span><span class="ico pdf">PDF</span><span class="fn">研究区概况.pdf</span></div>
+    </div>
+  </div>
+</body>
+</html>
