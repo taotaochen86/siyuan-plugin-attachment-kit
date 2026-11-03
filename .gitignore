@@ -12,3 +12,7 @@ test/_*.txt
 # 系统垃圾
 Thumbs.db
 .DS_Store
+
+# 内部交接文档，不进公开仓库
+交接说明.md
+对话.md
