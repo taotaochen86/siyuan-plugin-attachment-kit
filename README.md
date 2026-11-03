@@ -52,7 +52,7 @@
 
 导出的是**副本**：思源库里的原文件、文档内容一概不动。
 
-![导出结果：临时文件夹里按正文顺序编号 001- 到 055](https://cdn.jsdelivr.net/gh/taotaochen86/siyuan-plugin-attachment-kit@main/assets/fig-export.png)
+<img src="assets/fig-export.png" alt="导出结果：临时文件夹里按正文顺序编号 001- 到 055" width="620" onerror="this.src='/plugins/siyuan-plugin-attachment-kit/assets/fig-export.png'">
 
 ### 2.3 一个顶栏图标，两件事
 
@@ -69,7 +69,7 @@
 - 定位贴上沿自动内收，不会跑出屏幕；点别处或按 `Esc` 关闭。
 - 颜色全部取思源 `--b3-*` 变量，**亮 / 暗主题自动跟随**，不用手动切。
 
-![顶栏图标弹出的下拉菜单](https://cdn.jsdelivr.net/gh/taotaochen86/siyuan-plugin-attachment-kit@main/assets/fig-menu.png)
+<img src="assets/fig-menu.png" alt="顶栏图标弹出的下拉菜单" width="460" onerror="this.src='/plugins/siyuan-plugin-attachment-kit/assets/fig-menu.png'">
 
 ### 2.4 作用域：只扫当前文档
 
